@@ -4,7 +4,7 @@ A sample project for a recipe system
 
 ## Installation
 
-Project requires a SQL|SQLEXPRESS instance to be available. Connection string in appsettings.json should be adjusted accordingly.
+Project requires a SQL or SQLEXPRESS instance to be available. Connection string in appsettings.json should be adjusted accordingly.
 
 
 ## Usage

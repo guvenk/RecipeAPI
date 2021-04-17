@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
 using DataAccess;
+using Business;
 
 namespace RecipeAPI
 {
@@ -26,6 +27,8 @@ namespace RecipeAPI
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+            
+            services.AddScoped<IRecipeService, RecipeService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
