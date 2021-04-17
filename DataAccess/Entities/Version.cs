@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DataAccess
 {
@@ -11,5 +12,7 @@ namespace DataAccess
         public List<Media> Medias { get; set; }
 
         public List<Comment> Comments { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }
