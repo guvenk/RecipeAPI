@@ -27,7 +27,8 @@ namespace RecipeAPI
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
-            
+
+            services.AddAutoMapper(x => x.AddMaps("Business"));
             services.AddScoped<IRecipeService, RecipeService>();
 
             services.AddControllers();
