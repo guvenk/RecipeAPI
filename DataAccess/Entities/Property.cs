@@ -10,7 +10,7 @@ namespace DataAccess
         public long MetaItemId { get; set; }
         public MetaItem MetaItem { get; set; }
 
-        public long RecipeId { get; set; }
-        public Recipe Recipe { get; set; }
+        public long VersionId { get; set; }
+        public Version Version { get; set; }
     }
 }

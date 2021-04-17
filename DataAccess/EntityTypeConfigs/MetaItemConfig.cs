@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DataAccess.EntityTypeConfigs
 {
-    public class MetaItemTypeConfig : IEntityTypeConfiguration<MetaItem>
+    public class MetaItemConfig : IEntityTypeConfiguration<MetaItem>
     {
         public void Configure(EntityTypeBuilder<MetaItem> builder)
         {
@@ -17,8 +17,8 @@ namespace DataAccess.EntityTypeConfigs
             builder.HasKey(x => x.Id)
                 .IsClustered();
 
-            // to help for the performance of queries
-            builder.HasIndex(x => new { x.Name, x.DataType })
+            // to help for the performance of queries that filters by Name
+            builder.HasIndex(x => x.Name)
                 .IsUnique();
 
             builder.Property(x => x.Name)

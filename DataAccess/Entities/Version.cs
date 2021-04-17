@@ -13,6 +13,9 @@ namespace DataAccess
 
         public List<Comment> Comments { get; set; }
 
+        public long RecipeId { get; set; }
+        public Recipe Recipe { get; set; }
+
         public DateTime CreatedDate { get; set; }
     }
 }
