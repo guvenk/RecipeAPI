@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
 using DataAccess;
 using Business;
+using Business.Profiles;
 
 namespace RecipeAPI
 {
@@ -28,7 +29,8 @@ namespace RecipeAPI
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddAutoMapper(x => x.AddMaps("Business"));
+            services.AddAutoMapper(typeof(RecipeProfile));
+
             services.AddScoped<IRecipeService, RecipeService>();
 
             services.AddControllers();

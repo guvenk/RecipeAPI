@@ -19,6 +19,15 @@ namespace Business
             _context = context;
             _mapper = mapper;
         }
+
+        public async Task CreateRecipe(RecipeDto recipeDto)
+        {
+            var recipe = _mapper.Map<Recipe>(recipeDto);
+
+            await _context.Recipes.AddAsync(recipe);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<RecipeDto>> GetAllRecipes()
         {
             var recipes = await _context.Recipes

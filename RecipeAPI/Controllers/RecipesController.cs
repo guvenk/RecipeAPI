@@ -34,5 +34,14 @@ namespace RecipeAPI.Controllers
 
             return Ok(recipes);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PostRecipe(RecipeDto recipeDto)
+        {
+            await _recipeService.CreateRecipe(recipeDto);
+
+            return Ok();
+        }
     }
 }

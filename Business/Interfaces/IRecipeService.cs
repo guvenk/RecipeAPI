@@ -7,5 +7,6 @@ namespace Business
     public interface IRecipeService
     {
         Task<List<RecipeDto>> GetAllRecipes();
+        Task CreateRecipe(RecipeDto recipeDto);
     }
 }
