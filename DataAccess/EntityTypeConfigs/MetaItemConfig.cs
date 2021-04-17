@@ -52,18 +52,24 @@ namespace DataAccess.EntityTypeConfigs
                 new MetaItem
                 {
                     Id = 4L,
-                    Name = "Category",
+                    Name = "OriginCity",
                     DataType = "string",
                 },
                 new MetaItem
                 {
                     Id = 5L,
-                    Name = "Ingredient",
+                    Name = "Category",
                     DataType = "string",
                 },
                 new MetaItem
                 {
                     Id = 6L,
+                    Name = "Ingredient",
+                    DataType = "string",
+                },
+                new MetaItem
+                {
+                    Id = 7L,
                     Name = "IsSpicy",
                     DataType = "bool",
                 }

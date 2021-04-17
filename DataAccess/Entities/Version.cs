@@ -5,7 +5,7 @@ namespace DataAccess
 {
     public class Version : EntityBase
     {
-        public int Rating { get; set; }
+        public int? Rating { get; set; }
 
         public List<Property> Properties { get; set; }
 
