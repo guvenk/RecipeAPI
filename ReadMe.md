@@ -7,11 +7,23 @@ A sample project for a recipe system
 Project requires a SQL or SQLEXPRESS instance to be available. Connection string in appsettings.json should be adjusted accordingly.
 
 
+## Libraries and Frameworks
+- .Net Core 5.0
+- EF Core 5.0
+- Automapper 10.1.1 is utilized to map dto classes to entities and vice versa for user to consume the api.
+- Swashbuckle.AspNetCore 5.6.3 to have auto generated documentation of the API
+
 ## Usage
 
 - Build the solution with Visual Studio or 'dotnet build' command with dotnet CLI.using 
 - Run it using either Visual Studio or 'dotnet run' command with dotnet CLI in project's main directory.
 
+
+## API
+
+- The Api has 1 controller with 2 endpoints.
+- [GET] Recipes : To fetch all existing recipes for view.
+- [POST] Recipe : To save a recipe with all related data of it.
 
 
 ## Database Structure
