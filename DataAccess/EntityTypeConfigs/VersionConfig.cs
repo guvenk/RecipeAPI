@@ -25,21 +25,21 @@ namespace DataAccess.EntityTypeConfigs
                 .IsRequired();
 
             builder.HasMany(x => x.Properties)
-                  .WithOne()
+                  .WithOne(x => x.Version)
                   .HasForeignKey(x => x.VersionId)
                   .HasPrincipalKey(x => x.Id)
                   .IsRequired()
                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.Comments)
-                 .WithOne()
+                 .WithOne(x => x.Version)
                  .HasForeignKey(x => x.VersionId)
                  .HasPrincipalKey(x => x.Id)
                  .IsRequired()
                  .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.Medias)
-                 .WithOne()
+                 .WithOne(x => x.Version)
                  .HasForeignKey(x => x.VersionId)
                  .HasPrincipalKey(x => x.Id)
                  .IsRequired()

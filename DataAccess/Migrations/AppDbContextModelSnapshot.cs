@@ -47,16 +47,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("versionId");
 
-                    b.Property<long?>("VersionId1")
-                        .HasColumnType("bigint")
-                        .HasColumnName("versionId1");
-
                     b.HasKey("Id")
                         .IsClustered();
 
                     b.HasIndex("VersionId");
-
-                    b.HasIndex("VersionId1");
 
                     b.ToTable("comment", "dbo");
                 });
@@ -97,16 +91,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("versionId");
 
-                    b.Property<long?>("VersionId1")
-                        .HasColumnType("bigint")
-                        .HasColumnName("versionId1");
-
                     b.HasKey("Id")
                         .IsClustered();
 
                     b.HasIndex("VersionId");
-
-                    b.HasIndex("VersionId1");
 
                     b.ToTable("media", "dbo");
                 });
@@ -210,18 +198,12 @@ namespace DataAccess.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("versionId");
 
-                    b.Property<long?>("VersionId1")
-                        .HasColumnType("bigint")
-                        .HasColumnName("versionId1");
-
                     b.HasKey("Id")
                         .IsClustered();
 
                     b.HasIndex("MetaItemId");
 
                     b.HasIndex("VersionId");
-
-                    b.HasIndex("VersionId1");
 
                     b.ToTable("property", "dbo");
                 });
@@ -294,30 +276,22 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Comment", b =>
                 {
-                    b.HasOne("DataAccess.Version", null)
+                    b.HasOne("DataAccess.Version", "Version")
                         .WithMany("Comments")
                         .HasForeignKey("VersionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DataAccess.Version", "Version")
-                        .WithMany()
-                        .HasForeignKey("VersionId1");
 
                     b.Navigation("Version");
                 });
 
             modelBuilder.Entity("DataAccess.Media", b =>
                 {
-                    b.HasOne("DataAccess.Version", null)
+                    b.HasOne("DataAccess.Version", "Version")
                         .WithMany("Medias")
                         .HasForeignKey("VersionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DataAccess.Version", "Version")
-                        .WithMany()
-                        .HasForeignKey("VersionId1");
 
                     b.Navigation("Version");
                 });
@@ -330,15 +304,11 @@ namespace DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataAccess.Version", null)
+                    b.HasOne("DataAccess.Version", "Version")
                         .WithMany("Properties")
                         .HasForeignKey("VersionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DataAccess.Version", "Version")
-                        .WithMany()
-                        .HasForeignKey("VersionId1");
 
                     b.Navigation("MetaItem");
 

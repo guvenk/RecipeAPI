@@ -26,9 +26,6 @@ namespace DataAccess.EntityTypeConfigs
             builder.Property(x => x.CreatedDate)
                 .HasColumnType("datetime2(2)")
                 .IsRequired();
-
-            builder.Property(x => x.VersionId)
-                .IsRequired();
         }
     }
 }

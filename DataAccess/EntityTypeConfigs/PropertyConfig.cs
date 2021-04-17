@@ -23,9 +23,6 @@ namespace DataAccess.EntityTypeConfigs
 
             builder.Property(x => x.MetaItemId)
                 .IsRequired();
-
-            builder.Property(x => x.VersionId)
-               .IsRequired();
         }
     }
 }

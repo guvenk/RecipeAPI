@@ -85,8 +85,7 @@ namespace DataAccess.Migrations
                     text = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     userId = table.Column<long>(type: "bigint", nullable: true),
                     createdDate = table.Column<DateTime>(type: "datetime2(2)", nullable: false),
-                    versionId = table.Column<long>(type: "bigint", nullable: false),
-                    versionId1 = table.Column<long>(type: "bigint", nullable: true)
+                    versionId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,13 +98,6 @@ namespace DataAccess.Migrations
                         principalTable: "version",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_comment_version_versionId1",
-                        column: x => x.versionId1,
-                        principalSchema: "dbo",
-                        principalTable: "version",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,8 +111,7 @@ namespace DataAccess.Migrations
                     type = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     storageSource = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     createdDate = table.Column<DateTime>(type: "datetime2(2)", nullable: false),
-                    versionId = table.Column<long>(type: "bigint", nullable: false),
-                    versionId1 = table.Column<long>(type: "bigint", nullable: true)
+                    versionId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,13 +124,6 @@ namespace DataAccess.Migrations
                         principalTable: "version",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_media_version_versionId1",
-                        column: x => x.versionId1,
-                        principalSchema: "dbo",
-                        principalTable: "version",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -151,8 +135,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     value = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
                     metaItemId = table.Column<long>(type: "bigint", nullable: false),
-                    versionId = table.Column<long>(type: "bigint", nullable: false),
-                    versionId1 = table.Column<long>(type: "bigint", nullable: true)
+                    versionId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,13 +155,6 @@ namespace DataAccess.Migrations
                         principalTable: "version",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_property_version_versionId1",
-                        column: x => x.versionId1,
-                        principalSchema: "dbo",
-                        principalTable: "version",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -203,22 +179,10 @@ namespace DataAccess.Migrations
                 column: "versionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_comment_versionId1",
-                schema: "dbo",
-                table: "comment",
-                column: "versionId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_media_versionId",
                 schema: "dbo",
                 table: "media",
                 column: "versionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_media_versionId1",
-                schema: "dbo",
-                table: "media",
-                column: "versionId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_metaItem_name",
@@ -238,12 +202,6 @@ namespace DataAccess.Migrations
                 schema: "dbo",
                 table: "property",
                 column: "versionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_property_versionId1",
-                schema: "dbo",
-                table: "property",
-                column: "versionId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_version_recipeId",
