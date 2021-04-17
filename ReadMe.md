@@ -6,6 +6,7 @@ A sample project for a recipe system
 
 - Project requires a SQL or SQLEXPRESS instance to be available. Connection string in appsettings.json should be adjusted accordingly.
 - Please use Update-Database command on Package Manager Console to create the database.
+- .Net Core 5.0 SDK must be installed.
 
 ## Libraries and Frameworks
 - .Net Core 5.0
