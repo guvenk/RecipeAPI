@@ -24,7 +24,12 @@ namespace Tests
         [Fact]
         public async Task Recipes_GetAll_ReturnEmptySet()
         {
+            // Arrange
+            
+            // Act
             var result = await _recipeService.GetAllRecipes();
+
+            // Assert
             Assert.Empty(result);
         }
     }
