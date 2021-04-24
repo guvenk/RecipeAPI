@@ -19,6 +19,14 @@ namespace RecipeAPI.Controllers
             _logger = logger;
         }
 
+        [HttpGet("test")]
+        public async Task<IActionResult> Test()
+        {
+            await _recipeService.Test();
+
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllRecipes()
         {

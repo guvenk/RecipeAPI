@@ -4,43 +4,22 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210424102648_many-to-many")]
+    partial class manytomany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("DataAccess.Blog", b =>
-                {
-                    b.Property<int>("BlogId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("blogId")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BlogType")
-                        .HasColumnType("int")
-                        .HasColumnName("blogType");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("url");
-
-                    b.HasKey("BlogId");
-
-                    b.ToTable("blogs");
-
-                    b.HasDiscriminator<int>("BlogType").HasValue(0);
-                });
 
             modelBuilder.Entity("DataAccess.Comment", b =>
                 {
@@ -346,19 +325,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("TagsTagId");
 
                     b.ToTable("postTag");
-                });
-
-            modelBuilder.Entity("DataAccess.RssBlog", b =>
-                {
-                    b.HasBaseType("DataAccess.Blog");
-
-                    b.Property<string>("RssUrl")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("rssUrl");
-
-                    b.ToTable("blogs");
-
-                    b.HasDiscriminator().HasValue(1);
                 });
 
             modelBuilder.Entity("DataAccess.Comment", b =>

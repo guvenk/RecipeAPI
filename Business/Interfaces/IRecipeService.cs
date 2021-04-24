@@ -8,5 +8,8 @@ namespace Business
     {
         Task<List<RecipeDto>> GetAllRecipes();
         Task CreateRecipe(RecipeDto recipeDto);
+
+        Task Test();
+
     }
 }

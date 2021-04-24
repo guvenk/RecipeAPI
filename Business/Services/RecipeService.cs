@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -23,6 +24,15 @@ namespace Business
             var recipe = _mapper.Map<Recipe>(recipeDto);
 
             await _context.Recipes.AddAsync(recipe);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Test()
+        {
+
+            _context.RssBlogs.Add(new RssBlog { Url = "-", RssUrl = "Bomb" });
+            _context.Blogs.Add(new Blog { Url = "-" });
+
             await _context.SaveChangesAsync();
         }
 
