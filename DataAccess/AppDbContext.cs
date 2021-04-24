@@ -4,8 +4,6 @@ using System.Reflection;
 
 namespace DataAccess
 {
-
-
     public class AppDbContext : DbContext
     {
 
@@ -45,44 +43,16 @@ namespace DataAccess
                         $"{property.GetColumnName().Substring(0, 1).ToLowerInvariant()}{property.GetColumnName()[1..]}");
             }
 
-            // TPH
-            modelBuilder.Entity<Blog>()
-                .HasDiscriminator(x => x.BlogType)
-                .HasValue<Blog>(BlogType.Normal)
-                .HasValue<RssBlog>(BlogType.Rss);
+            // Table-per-hierarchy
+            //modelBuilder.Entity<Blog>()
+            //    .HasDiscriminator(x => x.BlogType)
+            //    .HasValue<Blog>(BlogType.Normal)
+            //    .HasValue<RssBlog>(BlogType.Rss);
+
+            // Table-Per-Type
+            //modelBuilder.Entity<Blog>().ToTable("Blogs");
+            //modelBuilder.Entity<RssBlog>().ToTable("RssBlogs");
         }
 
-        public class Blog
-        {
-            public int BlogId { get; set; }
-            public string Url { get; set; }
-            public BlogType BlogType { get; set; }
-        }
-        public enum BlogType
-        {
-            Normal,
-            Rss
-        }
-
-        public class RssBlog : Blog
-        {
-            public string RssUrl { get; set; }
-        }
-
-        public class Post
-        {
-            public int PostId { get; set; }
-            public string Title { get; set; }
-            public string Content { get; set; }
-
-            public ICollection<Tag> Tags { get; set; }
-        }
-
-        public class Tag
-        {
-            public int TagId { get; set; }
-
-            public ICollection<Post> Posts { get; set; }
-        }
     }
 }
