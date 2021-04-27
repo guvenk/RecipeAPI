@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -27,6 +28,12 @@ namespace DataAccess
 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.LogTo(Console.WriteLine);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -44,10 +51,10 @@ namespace DataAccess
             }
 
             // Table-per-hierarchy
-            //modelBuilder.Entity<Blog>()
-            //    .HasDiscriminator(x => x.BlogType)
-            //    .HasValue<Blog>(BlogType.Normal)
-            //    .HasValue<RssBlog>(BlogType.Rss);
+            modelBuilder.Entity<Blog>()
+                .HasDiscriminator(x => x.BlogType)
+                .HasValue<Blog>(BlogType.Normal)
+                .HasValue<RssBlog>(BlogType.Rss);
 
             // Table-Per-Type
             //modelBuilder.Entity<Blog>().ToTable("Blogs");
